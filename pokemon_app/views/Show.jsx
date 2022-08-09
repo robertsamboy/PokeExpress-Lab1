@@ -35,10 +35,6 @@ class Show extends React.Component {
                                 pokemon!
                                
                             </li>
-                        
-                        
-                
-                    
                 </ul>
                 
             </div>

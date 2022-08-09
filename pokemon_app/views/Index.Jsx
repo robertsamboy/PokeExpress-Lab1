@@ -1,12 +1,14 @@
 const React = require('react');
-const design = {
-    color: 'black',
-    backgroundColor: 'green'
-};
+
 
  class Index extends React.Component{
     render(){
-        const { pokemon } = this.props;
+        const design = {
+            color: 'black',
+            backgroundColor: 'green'
+        };
+        
+        const { pokemons } = this.props;
        function caps(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
        }
@@ -16,11 +18,13 @@ const design = {
             <div > 
                 <h1>See All The Pokemon!</h1>
                 <ul> 
-                    {pokemon.map((pokemon, i) =>{
+                    {pokemons.map((pokemon, i) =>{
                         return(
                             <li> 
                                 This{' '}
-                                {caps(pokemon.name)}
+                               <a href ={`/pokemon/x/${i}`} >
+                               {caps(pokemon.name)}
+                               </a>
                                 {' '}
                                 is{' '}
                                 a{' '}

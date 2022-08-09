@@ -1,5 +1,6 @@
-const { application } = require('express');
+
 const express = require('express');
+const pokemons = require('./models/pokemon');
 require('dotenv').config();
 const pokemon = require('./models/pokemon')
 const app = express();
@@ -16,16 +17,26 @@ app.get('/',(req,res)=>{
     res.send('Welcome to the Pokemon App!')
 })
 
-app.get('/pokemon',(req,res)=>{
-    res.render('Index', {pokemon:pokemon})
+app.get('/pokemon/',(req,res)=>{
+    res.render('Index', {pokemons:pokemons})
 })
 
+
+
+
+
+app.post('/pokemon/x/', (req,res)=>{
+    res.render('Show',{pokemons:pokemons})
+    
+})
+
+app.get('/pokemon/x/:input',(req,res)=>{
+    res.render('Show',{pokemon:pokemons[req.params.input]})
+  
+})
 app.get('/pokemon/:id', (req,res)=>{
-    res.send(req.params.id)
+    res.render('Show',{pokemon: pokemons[req.params.id]})
 })
-
-
-
 
 app.listen(port,() => {
     console.log('I am listening on port' , port);
